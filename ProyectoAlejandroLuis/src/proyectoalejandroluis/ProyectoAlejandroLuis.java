@@ -17,7 +17,9 @@ public class ProyectoAlejandroLuis{
         File f = new File("books.xml");
         AbrirDoc abrirDoc = new AbrirDoc();
         LeerAccesoDom leerAccesoDom = new LeerAccesoDom();
+        InsertarDatosDOM insertarDatos = new InsertarDatosDOM();        
         doc = abrirDoc.abrirDoc(f);
+        doc = insertarDatos.insertarLibroEnDOM("Autor1", "Titulo1", "Genero1", "Precio1", "Fecha1", "Descripcion1", f, doc);
         leerAccesoDom.mostrarLibros(doc);
         
     }
