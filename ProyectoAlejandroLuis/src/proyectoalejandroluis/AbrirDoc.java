@@ -13,5 +13,26 @@ public class AbrirDoc {
     
     Document doc;
     
-    
+    public Document abrirDoc(File f)
+    {
+        try
+        {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            
+            factory.setIgnoringComments(true);
+            factory.setIgnoringElementContentWhitespace(true);
+            
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            doc = (Document) builder.parse(f);
+            
+            System.out.println("DOM creado correctamente");
+            
+            return doc;
+        }
+        catch (IOException | ParserConfigurationException | SAXException e)
+        {
+            System.out.println(e);
+            return null;
+        }
+    }
 }
