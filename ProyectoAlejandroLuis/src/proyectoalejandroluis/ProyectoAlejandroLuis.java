@@ -11,17 +11,20 @@ import org.w3c.dom.Document;
 
 public class ProyectoAlejandroLuis{
     public static void main(String[] args) {
-        try { System.setOut(new PrintStream(System.out, true, "UTF-8"));} 
-        catch (UnsupportedEncodingException e) {System.out.println(e);}
-        Document doc;
-        File f = new File("books.xml");
-        AbrirDoc abrirDoc = new AbrirDoc();
-        LeerAccesoDom leerAccesoDom = new LeerAccesoDom();
-        InsertarDatosDOM insertarDatos = new InsertarDatosDOM();        
-        doc = abrirDoc.abrirDoc(f);
-        doc = insertarDatos.insertarLibroEnDOM("Autor1", "Titulo1", "Genero1", "Precio1", "Fecha1", "Descripcion1", f, doc);
-        leerAccesoDom.mostrarLibros(doc);
-        
+
+        try {
+            //Para que funcionen las ñ
+            System.setOut(new PrintStream(System.out, true, "UTF-8"));
+            Document doc;
+            File f = new File("books.xml");
+            AbrirDoc abrirDoc = new AbrirDoc();
+            LeerAccesoDom leerAccesoDom = new LeerAccesoDom();
+            doc = abrirDoc.abrirDoc(f);
+            leerAccesoDom.mostrarLibros(doc);
+        } 
+        catch (UnsupportedEncodingException e) {
+            System.out.println(e);
+        }     
     }
     
 }
