@@ -19,7 +19,10 @@ public class ProyectoAlejandroLuis{
             File f = new File("books.xml");
             AbrirDoc abrirDoc = new AbrirDoc();
             LeerAccesoDom leerAccesoDom = new LeerAccesoDom();
+            EliminarNodo eliminarNodo = new EliminarNodo();
             doc = abrirDoc.abrirDoc(f);
+            //leerAccesoDom.mostrarLibros(doc);
+            doc = eliminarNodo.deleteNode("Midnight Rain", doc);
             leerAccesoDom.mostrarLibros(doc);
         } 
         catch (UnsupportedEncodingException e) {
