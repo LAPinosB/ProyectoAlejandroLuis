@@ -31,6 +31,8 @@ public class ProyectoAlejandroLuis{
             InsertarDatosDOM insertarDatos = new InsertarDatosDOM();
             //Instanciamos la clase Guardar Archivo
             GuardarDomNuevoArchivo guardarDomNuevoArchivo = new GuardarDomNuevoArchivo();
+            //Instanciamos la clase Buscar Libro
+            BuscarLibro buscarLibro = new BuscarLibro();
             doc = abrirDoc.abrirDoc(f);
             
             String author,title,genre,price,date,description;
@@ -41,8 +43,9 @@ public class ProyectoAlejandroLuis{
                 System.out.println("Que quieres hacer con el XML");
                 System.out.println(" - 1 - Leer XML");
                 System.out.println(" - 2 - Añadir datos");
-                System.out.println(" - 3 - Eliminar datos");
-                System.out.println(" - 4 - Guardar");
+                System.out.println(" - 3 - Buscar libro");
+                System.out.println(" - 4 - Eliminar datos");
+                System.out.println(" - 5 - Guardar");
                 System.out.println(" - 0 - Cerrar");
                 opc = sc.nextInt();
                 
@@ -70,12 +73,18 @@ public class ProyectoAlejandroLuis{
                         break;
                     case 3:
                         sc.nextLine();
+                        System.out.print("Introduce el titulo o el ID: ");
+                        title = sc.nextLine();
+                        buscarLibro.buscarLibro(title,doc);
+                        break;
+                    case 4:
+                        sc.nextLine();
                         System.out.print("Introduce el titulo del libro a eliminar: ");
                         title = sc.nextLine();
                         eliminarNodo.deleteNode(title, doc);
                         guardado = false;
                         break;
-                    case 4:
+                    case 5:
                         //Sobreescribir el mismo archivo para ver los cambios
                         guardarDomNuevoArchivo.guardarDOMcomoArchivo("books.xml", doc);
                         guardado = true;
