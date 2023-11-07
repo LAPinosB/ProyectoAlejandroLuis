@@ -35,6 +35,7 @@ public class ProyectoAlejandroLuis{
             
             String author,title,genre,price,date,description;
             int opc;
+            boolean guardado = true;
             do
             {
                 System.out.println("Que quieres hacer con el XML");
@@ -58,23 +59,34 @@ public class ProyectoAlejandroLuis{
                         author = sc.nextLine();
                         System.out.print("Introduce el genero: ");
                         genre = sc.nextLine();
-                        System.out.print("Introduce el precio: ");
+                        System.out.print("Introduce el precio: [0.0] ");
                         price = sc.nextLine();
-                        System.out.print("Introduce la fecha de publicacion: ");
+                        System.out.print("Introduce la fecha de publicacion: [YYYY-MM-DD] ");
                         date = sc.nextLine();
                         System.out.print("Introduce una descripcion: ");
                         description = sc.nextLine();
                         insertarDatos.insertarLibroEnDOM(author, title, genre, price, date, description, doc);
+                        guardado = false;
                         break;
                     case 3:
                         sc.nextLine();
                         System.out.print("Introduce el titulo del libro a eliminar: ");
                         title = sc.nextLine();
                         eliminarNodo.deleteNode(title, doc);
+                        guardado = false;
                         break;
                     case 4:
                         //Sobreescribir el mismo archivo para ver los cambios
                         guardarDomNuevoArchivo.guardarDOMcomoArchivo("Books.xml", doc);
+                        guardado = true;
+                        break;
+                    case 0:
+                        if (guardado == false)
+                        {
+                            System.out.println("Tienes cambios sin guardar, seguro que quieres salir? [0 - Si / 1 - No]");
+                            opc = sc.nextInt();
+                        }
+                        
                 }
             }
             while (opc != 0);
