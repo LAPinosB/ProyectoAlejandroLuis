@@ -33,11 +33,12 @@ public class ProyectoAlejandroLuis{
             leerAccesoDom.mostrarLibros(doc); // Primera Prueba de que lee el acceso dom correctamente.
             doc = eliminarNodo.deleteNode("Midnight Rain", doc);
             doc = insertarDatos.insertarLibroEnDOM("Autor1", "TItulo1", "Genero1", "Precio1", "Fecha1", "Descripcion1", doc);
+            doc = insertarDatos.insertarLibroEnDOM("Autor2", "TItulo2", "Genero2", "Precio2", "Fecha2", "Descripcion2", doc);
             //Lectura del DOM con todas las modificaciones realizadas
             leerAccesoDom.mostrarLibros(doc);
             
             //Guardar en el Nuevo archivo
-            guardarDomNuevoArchivo.guardarDOMcomoArchivo("PruebaLuisY_Alejandro.xml", doc);
+            //guardarDomNuevoArchivo.guardarDOMcomoArchivo("PruebaLuisY_Alejandro.xml", doc);
             //Mostrar el nuevo archivo
         } 
         catch (UnsupportedEncodingException e) {

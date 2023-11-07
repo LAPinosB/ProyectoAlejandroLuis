@@ -78,7 +78,7 @@ public class InsertarDatosDOM {
         Element e = (Element) n;
         String aux = e.getAttribute("id");
         //Separa solo los numeros del ID
-        String id = aux.substring(2,5);
+        String id = aux.substring(2,aux.length());
         //Suma 1 al ID
         int nid = parseInt(id) + 1;
         //Vuelve a estructurar el ID
