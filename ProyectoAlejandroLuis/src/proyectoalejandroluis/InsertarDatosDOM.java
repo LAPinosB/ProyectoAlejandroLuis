@@ -2,14 +2,17 @@
 package proyectoalejandroluis;
 
 import java.io.File;
+import static java.lang.Integer.parseInt;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class InsertarDatosDOM {
     
     public Document insertarLibroEnDOM(String author,String title,String genre,String price,String date,String description,File f,Document doc)
     {
+        String id = sacarID(doc);
         try
         {
             //Crear el Autor
@@ -45,7 +48,8 @@ public class InsertarDatosDOM {
             //Crear el Libro
             Node nodeBook = doc.createElement("book");
             //Modificar despues para hacer autoincremental
-            ((Element)nodeBook).setAttribute("id", "bk000");
+            
+            ((Element)nodeBook).setAttribute("id", id);
             nodeBook.appendChild(nodeAuthor);
             nodeBook.appendChild(nodeTitle);
             nodeBook.appendChild(nodeGenre);
@@ -64,5 +68,18 @@ public class InsertarDatosDOM {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+    
+    public String sacarID(Document doc)
+    {
+        NodeList nlist = doc.getElementsByTagName("book");
+        int pos = nlist.getLength() -1;
+        Node n = nlist.item(pos);
+        Element e = (Element) n;
+        String aux = e.getAttribute("id");
+        String id = aux.substring(2,5);
+        int nid = parseInt(id) + 1;
+        id = "bk" + nid;
+        return id;
     }
 }

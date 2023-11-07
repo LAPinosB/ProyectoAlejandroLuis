@@ -54,7 +54,7 @@ public class LeerAccesoDom {
                 String titulo = elementoLibro.getElementsByTagName("title").item(0).getTextContent();
                 String genero = elementoLibro.getElementsByTagName("genre").item(0).getTextContent();
                 String precio = elementoLibro.getElementsByTagName("price").item(0).getTextContent();
-                String publicado = elementoLibro.getElementsByTagName("description").item(0).getTextContent();
+                String publicado = elementoLibro.getElementsByTagName("publish_date").item(0).getTextContent();
                 String descripcion = elementoLibro.getElementsByTagName("description").item(0).getTextContent();
                 String id = elementoLibro.getAttribute("id");
                 System.out.println("Autor: " + autor);
@@ -63,7 +63,7 @@ public class LeerAccesoDom {
                 System.out.println("Precio: " + precio);
                 System.out.println("Publicado: " + publicado);
                 System.out.println("Descripcion: " + descripcion);
-                System.out.println("Año de publicación: " + id);
+                System.out.println("Id: " + id);
                 System.out.println("------");
             }
         }

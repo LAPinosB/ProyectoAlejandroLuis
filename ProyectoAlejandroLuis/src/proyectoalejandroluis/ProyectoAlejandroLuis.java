@@ -23,7 +23,7 @@ public class ProyectoAlejandroLuis{
             InsertarDatosDOM insertarDatos = new InsertarDatosDOM();
             doc = abrirDoc.abrirDoc(f);
             //leerAccesoDom.mostrarLibros(doc);
-            doc = eliminarNodo.deleteNode("Midnight Rain", doc);
+            //doc = eliminarNodo.deleteNode("Midnight Rain", doc);
             doc = insertarDatos.insertarLibroEnDOM("Autor1", "TItulo1", "Genero1", "Precio1", "Fecha1", "Descripcion1", f, doc);
             leerAccesoDom.mostrarLibros(doc);
         } 
