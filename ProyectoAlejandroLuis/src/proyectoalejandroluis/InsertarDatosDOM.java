@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
 
 public class InsertarDatosDOM {
     
-    public Document insertarLibroEnDOM(String author,String title,String genre,String price,String date,String description,File f,Document doc)
+    public Document insertarLibroEnDOM(String author,String title,String genre,String price,String date,String description,Document doc)
     {
         String id = sacarID(doc);
         try
@@ -47,8 +47,6 @@ public class InsertarDatosDOM {
             
             //Crear el Libro
             Node nodeBook = doc.createElement("book");
-            //Modificar despues para hacer autoincremental
-            
             ((Element)nodeBook).setAttribute("id", id);
             nodeBook.appendChild(nodeAuthor);
             nodeBook.appendChild(nodeTitle);
@@ -70,15 +68,20 @@ public class InsertarDatosDOM {
         }
     }
     
+    //Crea un ID autoincremental
     public String sacarID(Document doc)
     {
         NodeList nlist = doc.getElementsByTagName("book");
+        //Coge el ultimo libro para sacar su ID
         int pos = nlist.getLength() -1;
         Node n = nlist.item(pos);
         Element e = (Element) n;
         String aux = e.getAttribute("id");
+        //Separa solo los numeros del ID
         String id = aux.substring(2,5);
+        //Suma 1 al ID
         int nid = parseInt(id) + 1;
+        //Vuelve a estructurar el ID
         id = "bk" + nid;
         return id;
     }

@@ -30,9 +30,9 @@ public class ProyectoAlejandroLuis{
             //Instanciamos la clase Guardar Archivo
             GuardarDomNuevoArchivo guardarDomNuevoArchivo = new GuardarDomNuevoArchivo();
             doc = abrirDoc.abrirDoc(f);
-            //leerAccesoDom.mostrarLibros(doc); // Primera Prueba de que lee el acceso dom correctamente.
+            leerAccesoDom.mostrarLibros(doc); // Primera Prueba de que lee el acceso dom correctamente.
             doc = eliminarNodo.deleteNode("Midnight Rain", doc);
-            doc = insertarDatos.insertarLibroEnDOM("Autor1", "TItulo1", "Genero1", "Precio1", "Fecha1", "Descripcion1", f, doc);
+            doc = insertarDatos.insertarLibroEnDOM("Autor1", "TItulo1", "Genero1", "Precio1", "Fecha1", "Descripcion1", doc);
             //Lectura del DOM con todas las modificaciones realizadas
             leerAccesoDom.mostrarLibros(doc);
             
