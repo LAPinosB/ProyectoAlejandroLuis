@@ -77,7 +77,7 @@ public class ProyectoAlejandroLuis{
                         break;
                     case 4:
                         //Sobreescribir el mismo archivo para ver los cambios
-                        guardarDomNuevoArchivo.guardarDOMcomoArchivo("Books.xml", doc);
+                        guardarDomNuevoArchivo.guardarDOMcomoArchivo("books.xml", doc);
                         guardado = true;
                         break;
                     case 0:
