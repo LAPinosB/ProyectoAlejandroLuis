@@ -2,6 +2,7 @@ package proyectoalejandroluis;
 import java.io.File;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Scanner;
 import org.w3c.dom.Document;
 
 /**
@@ -11,6 +12,7 @@ import org.w3c.dom.Document;
 
 public class ProyectoAlejandroLuis{
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
         try {
             //Para que funcionen las ñ
@@ -30,16 +32,52 @@ public class ProyectoAlejandroLuis{
             //Instanciamos la clase Guardar Archivo
             GuardarDomNuevoArchivo guardarDomNuevoArchivo = new GuardarDomNuevoArchivo();
             doc = abrirDoc.abrirDoc(f);
-            leerAccesoDom.mostrarLibros(doc); // Primera Prueba de que lee el acceso dom correctamente.
-            doc = eliminarNodo.deleteNode("Midnight Rain", doc);
-            doc = insertarDatos.insertarLibroEnDOM("Autor1", "TItulo1", "Genero1", "Precio1", "Fecha1", "Descripcion1", doc);
-            doc = insertarDatos.insertarLibroEnDOM("Autor2", "TItulo2", "Genero2", "Precio2", "Fecha2", "Descripcion2", doc);
-            //Lectura del DOM con todas las modificaciones realizadas
-            leerAccesoDom.mostrarLibros(doc);
             
-            //Guardar en el Nuevo archivo
-            //guardarDomNuevoArchivo.guardarDOMcomoArchivo("PruebaLuisY_Alejandro.xml", doc);
-            //Mostrar el nuevo archivo
+            String author,title,genre,price,date,description;
+            int opc;
+            do
+            {
+                System.out.println("Que quieres hacer con el XML");
+                System.out.println(" - 1 - Leer XML");
+                System.out.println(" - 2 - Añadir datos");
+                System.out.println(" - 3 - Eliminar datos");
+                System.out.println(" - 4 - Guardar");
+                System.out.println(" - 0 - Cerrar");
+                opc = sc.nextInt();
+                
+                switch (opc)
+                {
+                    case 1:
+                        leerAccesoDom.mostrarLibros(doc);
+                        break;
+                    case 2:
+                        sc.nextLine();
+                        System.out.print("Introduce el titulo: ");
+                        title = sc.nextLine();
+                        System.out.print("Introduce el autor: ");
+                        author = sc.nextLine();
+                        System.out.print("Introduce el genero: ");
+                        genre = sc.nextLine();
+                        System.out.print("Introduce el precio: ");
+                        price = sc.nextLine();
+                        System.out.print("Introduce la fecha de publicacion: ");
+                        date = sc.nextLine();
+                        System.out.print("Introduce una descripcion: ");
+                        description = sc.nextLine();
+                        insertarDatos.insertarLibroEnDOM(author, title, genre, price, date, description, doc);
+                        break;
+                    case 3:
+                        sc.nextLine();
+                        System.out.print("Introduce el titulo del libro a eliminar: ");
+                        title = sc.nextLine();
+                        eliminarNodo.deleteNode(title, doc);
+                        break;
+                    case 4:
+                        //Sobreescribir el mismo archivo para ver los cambios
+                        guardarDomNuevoArchivo.guardarDOMcomoArchivo("Books.xml", doc);
+                }
+            }
+            while (opc != 0);
         } 
         catch (UnsupportedEncodingException e) {
             System.out.println(e);
