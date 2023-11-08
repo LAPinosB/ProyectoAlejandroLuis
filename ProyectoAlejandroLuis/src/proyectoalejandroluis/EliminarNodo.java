@@ -17,7 +17,6 @@ public class EliminarNodo {
     public Document deleteNode(String title, Document document){
         System.out.println("Buscando el Libro: "+title+" para borrarlo ...");
         try{
-            Node raiz = document.getDocumentElement();
             NodeList nodeListOne = document.getElementsByTagName("title");
             Node n1;
             for(int i=0; i<nodeListOne.getLength();i++){

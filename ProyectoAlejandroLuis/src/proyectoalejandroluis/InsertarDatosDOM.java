@@ -68,6 +68,19 @@ public class InsertarDatosDOM {
         }
     }
     
+    public int UltimoIdXmlDesordenado(Document doc){
+        int num = 0; 
+        
+        NodeList nlist = doc.getElementsByTagName("book");
+        
+        //TO DO (Por hacer)
+//        for(){
+//            
+//        }
+        
+        return num;
+    }
+    
     //Crea un ID autoincremental
     public String sacarID(Document doc)
     {
