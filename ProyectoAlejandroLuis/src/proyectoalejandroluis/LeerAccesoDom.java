@@ -20,16 +20,23 @@ public class LeerAccesoDom {
     }
 
     private void mostrarNodosRecursivo(Node nodo) {
+        //Se ejecutara el codigo si el nodo que le hemos enviado es un elemento
         if (nodo.getNodeType() == Node.ELEMENT_NODE) {
+            //Convertimos el nodo en un elemento
             Element elemento = (Element) nodo;
+            //Guardamos el nombre del nodo en un String
             String nodoName = nodo.getNodeName();
-            //Si el nodo name es igual a cualquiera de nuestros dos nodos de etiquetas
-            if (nodoName.equals("catalog") || nodoName.equals("book")) {
+            //Se ejecutara el codigo si el nombre del nodo es uno de los dos especificados
+            if (nodoName.equals("catalog") || nodoName.equals("book")) 
+            {
+                //Muestra el nombre del nodo y su contenido
                 System.out.println(nodoName + ": " + nodo.getTextContent());
-            } else {
+            } 
+            else 
+            {
+                //Muestra el nombre del nodo
                 System.out.println(nodoName);
             }
-
             NamedNodeMap atributos = elemento.getAttributes();
             for (int i = 0; i < atributos.getLength(); i++) {
                 Node atributo = atributos.item(i);
@@ -44,12 +51,17 @@ public class LeerAccesoDom {
     }
 
     public void mostrarLibros(Document doc) {
+        //Crea una lista de los nodos 'book'
         NodeList libros = doc.getElementsByTagName("book");
-
-        for (int i = 0; i < libros.getLength(); i++) {
+        //Recorre la lista de nodos
+        for (int i = 0; i < libros.getLength(); i++)
+        {
             Node libro = libros.item(i);
-            if (libro.getNodeType() == Node.ELEMENT_NODE) {
+            if (libro.getNodeType() == Node.ELEMENT_NODE) 
+            {
+                //Convierte el nodo en un elemento
                 Element elementoLibro = (Element) libro;
+                //Guarda los datos del libro para mostrarlos
                 String autor = elementoLibro.getElementsByTagName("author").item(0).getTextContent();
                 String titulo = elementoLibro.getElementsByTagName("title").item(0).getTextContent();
                 String genero = elementoLibro.getElementsByTagName("genre").item(0).getTextContent();
@@ -57,14 +69,14 @@ public class LeerAccesoDom {
                 String publicado = elementoLibro.getElementsByTagName("publish_date").item(0).getTextContent();
                 String descripcion = elementoLibro.getElementsByTagName("description").item(0).getTextContent();
                 String id = elementoLibro.getAttribute("id");
+                System.out.println("Id: " + id);
                 System.out.println("Autor: " + autor);
                 System.out.println("Título: " + titulo);
                 System.out.println("Genero: " + genero);
                 System.out.println("Precio: " + precio);
                 System.out.println("Publicado: " + publicado);
                 System.out.println("Descripcion: " + descripcion);
-                System.out.println("Id: " + id);
-                System.out.println("------");
+                System.out.println("------------------");
             }
         }
     }
